@@ -24,7 +24,7 @@ function Write-ColoredMessage {
 }
 
 function Show-Help {
-    Write-ColoredMessage "🚀 Node.js Hello World App Management Script" $Colors.Blue
+    Write-ColoredMessage "Node.js Hello World App Management Script" $Colors.Blue
     Write-Host ""
     Write-Host "Usage: .\scripts\app.ps1 [command]"
     Write-Host ""
@@ -44,47 +44,47 @@ function Show-Help {
 }
 
 function Start-App {
-    Write-ColoredMessage "🚀 Starting Hello World app..." $Colors.Green
+    Write-ColoredMessage "Starting Hello World app..." $Colors.Green
     docker-compose up -d app
-    Write-ColoredMessage "✅ App started! Visit http://localhost:3000" $Colors.Green
+    Write-ColoredMessage "App started! Visit http://localhost:3000" $Colors.Green
 }
 
 function Start-DevApp {
-    Write-ColoredMessage "🔧 Starting Hello World app in development mode..." $Colors.Yellow
+    Write-ColoredMessage "Starting Hello World app in development mode..." $Colors.Yellow
     docker-compose up -d app-dev
-    Write-ColoredMessage "✅ Dev app started! Visit http://localhost:3001" $Colors.Green
+    Write-ColoredMessage "Dev app started! Visit http://localhost:3001" $Colors.Green
 }
 
 function Stop-App {
-    Write-ColoredMessage "🛑 Stopping Hello World app..." $Colors.Yellow
+    Write-ColoredMessage "Stopping Hello World app..." $Colors.Yellow
     docker-compose down
-    Write-ColoredMessage "✅ App stopped!" $Colors.Green
+    Write-ColoredMessage "App stopped!" $Colors.Green
 }
 
 function Restart-App {
-    Write-ColoredMessage "🔄 Restarting Hello World app..." $Colors.Yellow
+    Write-ColoredMessage "Restarting Hello World app..." $Colors.Yellow
     docker-compose restart
-    Write-ColoredMessage "✅ App restarted!" $Colors.Green
+    Write-ColoredMessage "App restarted!" $Colors.Green
 }
 
 function Show-Logs {
-    Write-ColoredMessage "📋 Showing app logs..." $Colors.Blue
+    Write-ColoredMessage "Showing app logs..." $Colors.Blue
     docker-compose logs -f app
 }
 
 function Show-Status {
-    Write-ColoredMessage "📊 App Status:" $Colors.Blue
+    Write-ColoredMessage "App Status:" $Colors.Blue
     docker-compose ps
 }
 
 function Invoke-Build {
-    Write-ColoredMessage "🏗️ Building Docker image..." $Colors.Yellow
+    Write-ColoredMessage "Building Docker image..." $Colors.Yellow
     docker-compose build
-    Write-ColoredMessage "✅ Build complete!" $Colors.Green
+    Write-ColoredMessage "Build complete!" $Colors.Green
 }
 
 function Test-App {
-    Write-ColoredMessage "🧪 Testing API endpoints..." $Colors.Blue
+    Write-ColoredMessage "Testing API endpoints..." $Colors.Blue
     Write-Host ""
     
     Write-ColoredMessage "Testing main endpoint:" $Colors.Yellow
@@ -93,7 +93,7 @@ function Test-App {
         $response | ConvertTo-Json -Depth 3
     }
     catch {
-        Write-ColoredMessage "❌ Main endpoint test failed: $_" $Colors.Red
+        Write-ColoredMessage "Main endpoint test failed: $_" $Colors.Red
     }
     
     Write-Host ""
@@ -103,28 +103,28 @@ function Test-App {
         $response | ConvertTo-Json -Depth 3
     }
     catch {
-        Write-ColoredMessage "❌ Health endpoint test failed: $_" $Colors.Red
+        Write-ColoredMessage "Health endpoint test failed: $_" $Colors.Red
     }
     
     Write-Host ""
-    Write-ColoredMessage "✅ API tests complete!" $Colors.Green
+    Write-ColoredMessage "API tests complete!" $Colors.Green
 }
 
 function Invoke-Cleanup {
-    Write-ColoredMessage "🧹 Cleaning up Docker resources..." $Colors.Yellow
+    Write-ColoredMessage "Cleaning up Docker resources..." $Colors.Yellow
     docker-compose down --rmi all --volumes --remove-orphans
-    Write-ColoredMessage "✅ Cleanup complete!" $Colors.Green
+    Write-ColoredMessage "Cleanup complete!" $Colors.Green
 }
 
 function Install-WSLDeps {
-    Write-ColoredMessage "📦 Installing Node.js dependencies using WSL..." $Colors.Yellow
+    Write-ColoredMessage "Installing Node.js dependencies using WSL..." $Colors.Yellow
     wsl -d Ubuntu bash -c "cd /home/cruze/Code/sample1 && npm install"
-    Write-ColoredMessage "✅ Dependencies installed!" $Colors.Green
+    Write-ColoredMessage "Dependencies installed!" $Colors.Green
 }
 
 function Start-WSLApp {
-    Write-ColoredMessage "🚀 Starting app using WSL (Node.js directly)..." $Colors.Green
-    Write-ColoredMessage "⚠️ This will run in the current terminal. Press Ctrl+C to stop." $Colors.Yellow
+    Write-ColoredMessage "Starting app using WSL (Node.js directly)..." $Colors.Green
+    Write-ColoredMessage "This will run in the current terminal. Press Ctrl+C to stop." $Colors.Yellow
     wsl -d Ubuntu bash -c "cd /home/cruze/Code/sample1 && npm start"
 }
 
@@ -143,7 +143,7 @@ switch ($Command.ToLower()) {
     "wsl-start" { Start-WSLApp }
     "help" { Show-Help }
     default {
-        Write-ColoredMessage "❌ Unknown command: $Command" $Colors.Red
+        Write-ColoredMessage "Unknown command: $Command" $Colors.Red
         Write-Host ""
         Show-Help
         exit 1
